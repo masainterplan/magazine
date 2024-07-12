@@ -1,0 +1,21 @@
+@use './_variables.scss' as *;
+
+@mixin mq($breakpoint: medium) {
+  @if($breakpoint ==small ) {
+    @media screen and (max-width: map-get($breakpoints, sm)){
+      @content;
+    }
+  }
+
+  @if($breakpoint ==medium ) {
+    @media screen and (max-width: map-get($breakpoints, md)){
+      @content;
+    }
+  }
+
+  @if ($breakpoint ==large) {
+    @media screen and (max-width: map-get($breakpoints, lg)){
+      @content;
+    }
+  }
+}

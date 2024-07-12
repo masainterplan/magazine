@@ -1,0 +1,492 @@
+@use './mixins' as *;
+
+.sec01 {
+  position: relative;
+  background-image: url(../img/mv-bg@2x.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%; 
+  z-index: 1;
+}
+
+.header {
+  background-color: #fff;
+  width: 200px;
+  height: 100vh;
+  position: fixed;
+  padding: 0 25px;
+  z-index: 20;
+
+  @include mq(medium) {
+   display: none;
+  }
+
+  ul {
+    font-weight: bold;
+  
+    :not(:last-of-type) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .sns-box {
+    position: absolute;
+    bottom: 0;
+
+    ul {
+      display: flex;
+      
+      li:not(:last-of-type)  {
+        margin-right: 10px;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 30px;
+    }
+  }
+}
+
+.h-logo {
+  padding: 30px 0 80px;
+
+  img {
+    width: 100%;
+  }
+}
+
+.h-logo.open {
+ display: none;
+}
+
+.header-sp {
+  display: none;
+  position: relative;
+
+  @include mq(medium) {
+    display: block;
+    background-color: #fff;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    transition: height 0.3s ease;
+
+    .h-logo {
+      padding: 0;
+      width: 22%;
+
+      img {
+        width: 100%;
+        display: inline;
+      }
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 25px;
+      height: 18px;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+
+      span {
+          display: block;
+          width: 27px;
+          height: 2px;
+          background-color: var(--text-color);
+          transition: transform 0.3s ease;
+      }
+
+      &.open span:nth-child(2) {
+          opacity: 0;
+      }
+
+      &.open span:first-child {
+          transform: rotate(45deg) translate(3px, 5px);
+      }
+
+      &.open span:last-child {
+          transform: rotate(-45deg) translate(3px, -5px);
+      }
+    }
+  }
+
+  @include mq(small) {
+        padding-top: 0;
+
+  }
+}
+
+.hamburger.open {
+  overflow: hidden;
+}
+
+
+
+/////////////////////////////////////////////////////////
+///**ハンバーガー**///////////////////////////////////////
+/////////////////////////////////////////////////////////
+.header-sp-nav {
+  display: none;
+}
+
+.header-sp-nav.open {
+  display: block;
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  height: 100vh;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+  z-index: 10;
+  text-align: center;
+
+  .sns-box {
+    position: absolute;
+    bottom: 80px;
+
+    ul {
+      display: flex;
+      text-align: center;
+
+      li {
+        &:not(:last-of-type){
+          margin-right: 10px;
+        }
+      }
+    }
+
+    img {
+      width: 90%;
+      height: auto;
+    }
+  }
+
+}
+
+
+.header-nav-box {
+
+  .header-nav {
+    font-weight: bold;
+  }
+  li {
+    &:not(:last-of-type) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.main {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: -10;
+
+  @include mq(large) {
+  height: auto;
+
+  }
+
+  @include mq(medium) {
+    height: calc(100vh - 60px);
+   }
+
+   @include mq(small) {
+    margin-top: 60px;
+  }
+
+  &-box{
+    width: 100%;
+    height: auto;
+    margin-left: 200px;
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: auto;
+      height: 80vh;
+    }
+
+
+    @include mq(large) {
+      margin-left: 200px;
+
+      img {
+        width: 70%;
+        height: auto;
+      }
+    }
+
+
+    @include mq(medium) {
+      margin-left: 0;
+
+      img {
+        width: 50%;
+        height: auto;
+        margin-top: 60px;
+      }
+      @include mq(small) {
+        img {
+          width: 85%;
+          height: auto;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  &-text-box {
+    position: absolute;
+    bottom: 50px;
+    left: 220px;
+
+    @include mq(large) {
+      bottom: 10px;
+    }
+
+    @include mq(medium) {
+      left: 10px;
+      bottom: 0;
+    }
+
+    @include mq(small) {
+      left: 10px;
+      bottom: 20px;
+      font-size: 1em;
+      line-height: .5em;
+    }
+  }
+
+
+  &-text {
+    display: inline-block;
+    padding: 10px;
+    background: #fff;
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1em;
+
+    &.date {
+      font-size: .9em;
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 7px;
+    }
+  }
+
+  @include mq(large) {
+    &-text {
+      font-size: 1.5em;
+
+      &.date {
+        font-size: .7em;
+      }
+    }
+  }
+
+  @include mq(medium) {
+    &-text {
+      font-size: 1.3em;
+
+      &.date {
+        font-size: .9em;
+      }
+    }
+  }
+
+  @include mq(small) {
+    &-text {
+      font-size: 1.2em;
+      padding: 5px 10px;
+
+      &.date {
+        font-size: .6em;
+      }
+    }
+  }
+}
+
+
+
+//////////////////////////////////////////////////////////
+///**backnumber**/////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+.sec02 {
+  background-color: #f8f8f8;
+  margin-left: 200px;
+
+  @include mq(medium){
+    margin-left: 0;
+  }
+}
+
+.backnumber-title {
+
+  padding: 15px 0 15px 15px;
+  h2 {
+    font-size: .8em;
+  }
+
+  p {
+    font-size: .4em;
+  }
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+
+  @include mq(small){
+    flex-direction: column;
+  }
+
+}
+
+.backnumber{
+  &-text-box {
+    width: 100%;
+    text-align: left;
+    font-size: .8em;
+  }
+  &-date {
+    font-size: 0.7em;
+  }
+  &-num {
+    font-size: 0.6em;
+  }
+  &-text {
+    font-size: 0.8em;
+  }
+
+  @include mq(small){
+    &-date {
+      font-size: 0.6em;
+    }
+    &-num {
+      font-size: 0.5em;
+    }
+    &-text {
+      font-size: 0.7em;
+    }
+  }
+
+  &-back01{
+    width: 50%;
+    height: auto;
+    background-color: #ecf4f9;
+    padding: 40px;
+    text-align: center;
+
+    @include mq(medium){
+    padding: 40px 15px;
+    }
+
+    @include mq(small){
+      width: 100%;
+    }
+  }
+  &-back02{
+    width: 50%;
+    height: auto;
+    background-color: #fbf3d2;
+    padding: 40px;
+    text-align: center;
+    @include mq(medium){
+        padding: 40px 15px;
+        }
+        @include mq(small){
+      width: 100%;
+    }
+      }
+  &-back03{
+    width: 50%;
+    height: auto;
+    background-color: #f9f2eb;
+    padding: 40px;
+    text-align: center;
+      @include mq(medium){
+        padding: 40px 15px;
+      }
+      @include mq(small){
+      width: 100%;
+    }
+  }
+  &-back04{
+    width: 50%;
+    height: auto;
+    background-color: #fae8c2;
+    padding: 40px;
+    text-align: center;
+      @include mq(medium){
+        padding: 40px 15px;
+      }
+      @include mq(small){
+      width: 100%;
+    }
+  }
+  &-back05{
+    width: 50%;
+    height: auto;
+    background-color: #e2efe7;
+    padding: 40px;
+    text-align: center;
+      @include mq(medium){
+        padding: 40px 15px;
+      }
+      @include mq(small){
+      width: 100%;
+    }
+  }
+  &-back06{
+    width: 50%;
+    height: auto;
+    background-color: #f2f5fb;
+    padding: 40px;
+    text-align: center;
+    @include mq(medium){
+    padding: 40px 15px;
+    }
+    @include mq(small){
+      width: 100%;
+    }
+  }
+
+
+  &-img {
+    width: 50%;
+    margin-top: 10px;
+    filter: drop-shadow(0px 0px 5px #dfdfdf);
+    &-box {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+}
+
+
+
+.fade-in-left {
+  transform: translate(-50px, 0);
+}
